@@ -1,0 +1,30 @@
+.form-select {
+    border-radius: 15px;
+}
+
+.form-control {
+    border-radius: 15px;
+}
+
+placeholder {
+    color: rgb(156, 156, 156);
+}
+
+.form-check {
+    width: fit-content;
+    margin: 0px auto;
+    label {
+        font-weight: 300;
+    }
+}
+
+label, legend {
+    font-weight: 700;
+}
+
+#request_color {
+    max-width: 70px;
+    height: 70px;
+    margin: 0px auto;
+    border-radius: 5px;
+}

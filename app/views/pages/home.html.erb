@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-bg">
+    <div class="my-container">
+        <h1>AI generated Icons for your web apps</h1>
+        <div class="form-wrapper">
+            <%= simple_form_for @request do |f| %>
+                <%= f.input :topic, label: "What icon are you looking for?", placeholder: "A calendar with a date inside" %>
+                <%= f.association :style, label: "Select a style for your icon", as: :radio_buttons %>
+                <%= f.input :color, as: :color, label: "Select a color for your icon", input_html: { class: "home-input" } %>
+                <%= f.submit "Generate icon", class: "button-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

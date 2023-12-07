@@ -1,0 +1,12 @@
+.button-primary {
+    background-color: $primary-red;
+    text-align: center;
+    padding: 10px 35px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    &:hover {
+        background-color: $secondary-red;
+    }
+}

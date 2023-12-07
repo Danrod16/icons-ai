@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "destroying users"
+User.destroy_all
+puts "destroying requests"
+Request.destroy_all
+puts "destroying styles"
+Style.destroy_all
+puts "destroying transactions"
+Transaction.destroy_all
+puts "destroying wallets"
+Wallet.destroy_all
+
+
+puts "creating seeds"
+
+User.create(email: "user1@gmail.com", password: "123123")
+Style.create(name: "minimal")
+Style.create(name: "Realistic")
+Style.create(name: "3D")
+Style.create(name: "isometric")
+
+
+puts "#{Style.count} styles created"
