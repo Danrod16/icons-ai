@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 .home-bg {
-    padding-top: 10vh;
-    background-image: asset-url('home-bg.png');
+    background-color: #333333;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -9,6 +8,7 @@
     h1 {
         text-align: center;
         font-size: 46px;
+        padding-top: 100px;
     }
 }
 

@@ -4,8 +4,16 @@
         <div class="form-wrapper">
             <%= simple_form_for @request do |f| %>
                 <%= f.input :topic, label: "What icon are you looking for?", placeholder: "A calendar with a date inside" %>
-                <%= f.association :style, label: "Select a style for your icon", as: :radio_buttons %>
-                <%= f.input :color, as: :color, label: "Select a color for your icon", input_html: { class: "home-input" } %>
+                <%= f.association :style, 
+                    label: "Select a style for your icon",
+                    as: :radio_buttons,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'category-wrapper',
+                    item_wrapper_class: 'category-item',
+                    input_html: { class: 'category-selector' } %>
+                <div class="form-colors">
+                    <%= f.input :color, as: :color, label: "Select a color for your icon", input_html: { class: "home-input" } %>
+                </div>
                 <%= f.submit "Generate icon", class: "button-primary" %>
             <% end %>
         </div>

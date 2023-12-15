@@ -54,6 +54,10 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem "ruby-openai"
+gem "cloudinary"
+gem "open-uri"
+gem "remove_bg"
 
 group :development, :test do
   gem "dotenv-rails"

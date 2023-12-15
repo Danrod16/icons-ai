@@ -21,10 +21,11 @@ Wallet.destroy_all
 puts "creating seeds"
 
 User.create(email: "user1@gmail.com", password: "123123")
-Style.create(name: "minimal")
-Style.create(name: "Realistic")
-Style.create(name: "3D")
-Style.create(name: "isometric")
+Style.create(name: "metallic 3D")
+Style.create(name: "Hand drawn")
+Style.create(name: "Flat")
+
+
 
 
 puts "#{Style.count} styles created"

@@ -2,5 +2,8 @@
     <div class="my-container">
         <h1>Your <%= @request.style.name %> icon request </h1>
         <p>"<%= @request.topic %> with <%= @request.style.name %> style and color code: <%= @request.color %>"</p>
+         <%= cl_image_tag @request.photo.key, width: 300, height: 300, crop: :fill, class: "request-image" %>
+         <%= link_to "Remove Background", remove_bg_path(@request), class: "btn btn-primary" %>
+         <%= link_to "Download" , download_path(@request), class: "btn btn-secondary" %>
     </div>
 </div>
