@@ -1,0 +1,13 @@
+<div class="request-bg">
+    <div class="my-container">
+        <h1>History</h1>
+            <br>
+            <div class="cards">
+                <% @requests.each do |request| %>
+                    <%= link_to request_path(request) do %>
+                        <%= cl_image_tag request.photo.key, width: 300, height: 300, crop: :fill, class: "card-category" %>
+                    <% end %>
+                <% end %>
+            </div>
+    </div>
+</div>

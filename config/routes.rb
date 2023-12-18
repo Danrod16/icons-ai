@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :requests, only: [:create, :show, :index]
   get "requests/:id/remove_bg", to: "requests#remove_bg", as: :remove_bg
   get "requests/:id/download", to: "requests#download", as: :download
+  get "history", to: "requests#history", as: :history
 end

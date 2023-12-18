@@ -84,34 +84,38 @@ input[type="color"] {
   
   
   #request_style_id_10 + label {
-    color: #FD1015;
+    color: #ffffff;
     background-image: asset-url('metallic-style.png');
+    background-color: rgb(232, 221, 221);
     background-size: cover;
   }
   
   #request_style_id_10:checked + label {
-    background-color: #FD1015;
-    border-color: #FD1015;
+    border-color: #fbfafa;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px #fbfafa;
   }
   
   
   #request_style_id_11 + label {
     color: #FFC65A;
+    background-color: black;
     background-size: cover;
   }
   
   #request_style_id_11:checked + label {
-    background-color: #FFC65A;
-    border-color: #FFC65A;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px #fbfafa;
   }
   
   
   #request_style_id_12 + label {
-    color: #62DDF5;
+    background-image: asset-url('flat-style.png');
+    color: rgb(255, 255, 255);
     background-size: cover;
   }
   
   #request_style_id_12:checked + label {
-    background-color: #62DDF5;
-    border-color: #62DDF5;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px #fbfafa;
   }

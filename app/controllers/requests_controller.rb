@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
         if @request.save
             redirect_to request_path(@request)
         else
-            redirect :back
+            render "pages/home"
         end 
     end
 
@@ -18,6 +18,10 @@ class RequestsController < ApplicationController
         @requests = Request.all
     end
 
+    def history
+        @requests = Request.where(user: current_user)
+    end
+
     def remove_bg
         @request = Request.find(params[:id])
         url = @request.photo.url
@@ -27,6 +31,7 @@ class RequestsController < ApplicationController
         @request.photo.purge if @request.photo.attached?
         @request.photo.attach(io: File.open(image_path), filename: "#{@request.topic.split(" ").join("-")}.jpg", content_type: "image/png")
         File.delete(image_path)
+        @request.background_removed!
         redirect_to request_path(@request)
     end
 

@@ -1,9 +1,16 @@
 <div class="request-bg">
     <div class="my-container">
         <h1>Your <%= @request.style.name %> icon request </h1>
-        <p>"<%= @request.topic %> with <%= @request.style.name %> style and color code: <%= @request.color %>"</p>
+        <div class="request-info-wrapper">
          <%= cl_image_tag @request.photo.key, width: 300, height: 300, crop: :fill, class: "request-image" %>
-         <%= link_to "Remove Background", remove_bg_path(@request), class: "btn btn-primary" %>
-         <%= link_to "Download" , download_path(@request), class: "btn btn-secondary" %>
+        <div class="request-buttons-wrapper">
+            <h2>"<%= @request.topic.capitalize %> with <%= @request.style.name %> style and color code: <%= @request.color %>"</h2>
+            <% unless @request.bg_removed? %>
+                <%= link_to "Remove Background", remove_bg_path(@request), class: "btn button-primary" %>
+            <% end %>
+            <%= link_to download_path(@request), class: "btn btn-secondary" do %>
+                <i class="fas fa-download"></i> Download
+            <% end %>
+         </div>
     </div>
 </div>

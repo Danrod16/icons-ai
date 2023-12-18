@@ -1,7 +1,12 @@
-h1, h2, h3, h4, h5, h6, label, legend, p, span, a, button, input, textarea, select, small {
+h1, h2, h3, h4, h5, h6, label, legend, p, span, a, button, textarea, select, small {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     margin: 0;
     padding: 0;
     color: white !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: white;
 }
