@@ -1,11 +1,11 @@
 <div class="home-bg">
     <div class="my-container">
-        <h1>AI generated Icons for your web apps</h1>
+        <h1>AI generated Logos for your web apps</h1>
         <div class="form-wrapper">
             <%= simple_form_for @request do |f| %>
-                <%= f.input :topic, label: "What icon are you looking for?", placeholder: "A calendar with a date inside" %>
+                <%= f.input :topic, label: "Describe your logo in detail", placeholder: "A calendar with a date inside" %>
                 <%= f.association :style, 
-                    label: "Select a style for your icon",
+                    label: "Select a style for your logo",
                     as: :radio_buttons,
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'category-wrapper',
