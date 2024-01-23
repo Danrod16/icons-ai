@@ -3,7 +3,8 @@
         <h1>AI generated Logos for your web apps</h1>
         <div class="form-wrapper">
             <%= simple_form_for @request do |f| %>
-                <%= f.input :topic, label: "Describe your logo in detail", placeholder: "A calendar with a date inside" %>
+                <%= f.input :name, label: "Name of your company", placeholder: "Duck Duck cap and go" %>
+                <%= f.input :topic, label: "Generate me a logo featuring...", placeholder: "A duck with a cap" %>
                 <%= f.association :style, 
                     label: "Select a style for your logo",
                     as: :radio_buttons,
