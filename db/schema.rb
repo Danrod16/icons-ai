@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_200350) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_23_142754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,24 +42,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_200350) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "prompts", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.text "prompt_response"
+    t.index ["user_id"], name: "index_prompts_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "color"
     t.string "topic"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "style_id", null: false
     t.string "background_color"
     t.boolean "bg_removed"
     t.string "name"
-    t.index ["style_id"], name: "index_requests_on_style_id"
+    t.bigint "prompt_id", null: false
+    t.index ["prompt_id"], name: "index_requests_on_prompt_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "styles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -86,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_200350) do
   end
 
   create_table "wallets", force: :cascade do |t|
-    t.float "balance"
+    t.float "balance", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -95,7 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_200350) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "requests", "styles"
+  add_foreign_key "prompts", "users"
+  add_foreign_key "requests", "prompts"
   add_foreign_key "requests", "users"
   add_foreign_key "transactions", "users"
   add_foreign_key "transactions", "wallets"

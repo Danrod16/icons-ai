@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :requests, dependent: :destroy
   has_many :transactions
+  has_many :prompts, dependent: :destroy
   has_one :wallet, dependent: :destroy
   after_create :assign_wallet
 

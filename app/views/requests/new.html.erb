@@ -1,0 +1,24 @@
+<div class="request-bg">
+    <div class="my-container">
+        <%= simple_form_for [@prompt, @request] do |f| %>
+            <%= f.input :topic, as: :radio_buttons, collection: @prompt.prompt_response.split("$"), label: "Please select the description that best fits your vision for the logo" %>
+            <%= f.submit "Generate logo", class: "button-primary" %>
+        <% end %>
+        <%= simple_form_for @new_prompt do |f| %>
+            <%= f.input :description, as: :hidden, input_html: { value: @prompt.description } %>
+            <%= f.submit "Give me other options", class: "btn btn-secondary" %>
+        <% end %>
+    </div>
+</div>
+            <%#= f.input :name, label: "Name of your company", placeholder: "Duck Duck cap and go" %>
+            <%#= f.input :topic, label: "Generate me a logo featuring...", placeholder: "A duck with a cap" %>
+            <%#= f.association :style, 
+                label: "Select a style for your logo",
+                as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: { class: 'category-selector' } %>
+            <div class="form-colors">
+                <%#= f.input :color, as: :color, label: "Select a color for your icon", input_html: { class: "home-input" } %>
+            </div>

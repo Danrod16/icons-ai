@@ -1,6 +1,6 @@
 require "test_helper"
 
-class StyleTest < ActiveSupport::TestCase
+class PromptsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -1,21 +1,21 @@
 <div class="home-bg">
     <div class="my-container">
-        <h1>AI generated Logos for your web apps</h1>
+        <h1>Hey there👋 I'm Willy, your AI graphic designer</h1>
+        <h3>Let me help you create a logo for your business in minutes</h3>
         <div class="form-wrapper">
-            <%= simple_form_for @request do |f| %>
-                <%= f.input :name, label: "Name of your company", placeholder: "Duck Duck cap and go" %>
-                <%= f.input :topic, label: "Generate me a logo featuring...", placeholder: "A duck with a cap" %>
-                <%= f.association :style, 
-                    label: "Select a style for your logo",
-                    as: :radio_buttons,
-                    collection_wrapper_tag: 'div',
-                    collection_wrapper_class: 'category-wrapper',
-                    item_wrapper_class: 'category-item',
-                    input_html: { class: 'category-selector' } %>
-                <div class="form-colors">
-                    <%= f.input :color, as: :color, label: "Select a color for your icon", input_html: { class: "home-input" } %>
-                </div>
-                <%= f.submit "Generate icon", class: "button-primary" %>
+            <%= simple_form_for @prompt do |f| %>
+                <%= f.input :description, label: "Describe your business and logo specifications for our AI graphic designer to understand your needs", placeholder: "I have a mexican restaurant that specializes in seafood dishes from the Yucatan peninsula, I am looking for a logo that represents the sea and the freshness of my ingredients, I'm also looking for the logo to include the colors of the mexican flag.", id: "prompt-description" %>
+                <%= f.submit "Submit", class: "button-primary" %>
+            <% end %>
+        </div>
+        <br>
+        <br>
+        <h3>Here are some logos I've created for other businesses</h3>
+        <div class="cards">
+            <% @requests.shuffle.take(9).each do |request| %>
+                <%= link_to request_path(request) do %>
+                    <%= cl_image_tag request.photo.key, width: 300, height: 300, crop: :fill, class: "card-category" %>
+                <% end %>
             <% end %>
         </div>
     </div>

@@ -10,8 +10,6 @@ puts "destroying users"
 User.destroy_all
 puts "destroying requests"
 Request.destroy_all
-puts "destroying styles"
-Style.destroy_all
 puts "destroying transactions"
 Transaction.destroy_all
 puts "destroying wallets"
@@ -21,12 +19,5 @@ Wallet.destroy_all
 puts "creating seeds"
 
 User.create(email: "user1@gmail.com", password: "123123")
-Style.create(name: "Vibrant")
-Style.create(name: "Neutral")
-Style.create(name: "Serious")
-Style.create(name: "Vintage")
 
 
-
-
-puts "#{Style.count} styles created"

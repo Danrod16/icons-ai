@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :requests, only: [:create, :show, :index]
+  resources :prompts, only: [:index, :show, :new, :create, :destroy] do
+    resources :requests, only: [:create, :new]
+  end
+  resources :requests, only: [:index, :show]
   get "requests/:id/remove_bg", to: "requests#remove_bg", as: :remove_bg
   get "requests/:id/download", to: "requests#download", as: :download
   get "history", to: "requests#history", as: :history

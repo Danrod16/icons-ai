@@ -1,18 +1,28 @@
 class RequestsController < ApplicationController
 
+    def new
+        @request = Request.new
+        @prompt = Prompt.find(params[:prompt_id])
+        @new_prompt = Prompt.new
+    end
+
     def create
         @request = Request.new(request_params)
         @request.user = current_user
-        if @request.save
+        @prompt = Prompt.find(params[:prompt_id])
+        @request.prompt = @prompt
+        if @request.save!
             redirect_to request_path(@request)
         else
-            render "pages/home"
+            render :new, unprocessable_entity: @request.errors
         end 
     end
 
     def show
         @request = Request.find(params[:id])
+        @prompt = @request.prompt
     end
+
 
     def index
         @requests = Request.all
@@ -26,10 +36,10 @@ class RequestsController < ApplicationController
         @request = Request.find(params[:id])
         url = @request.photo.url
         image = RemoveBg.from_url(url, size: "regular", type: "auto", raw: true, api_key: ENV["REMOVE_BG_API_KEY"])
-        image_path = "#{Rails.root}/app/assets/images/user_images/#{@request.id}-#{@request.topic}.png"
+        image_path = "#{Rails.root}/app/assets/images/user_images/#{@request.id}-logo.png"
         image.save(image_path, overwrite: true)      
         @request.photo.purge if @request.photo.attached?
-        @request.photo.attach(io: File.open(image_path), filename: "#{@request.topic.split(" ").join("-")}.jpg", content_type: "image/png")
+        @request.photo.attach(io: File.open(image_path), filename: "logo.png", content_type: "image/png")
         File.delete(image_path)
         @request.background_removed!
         redirect_to request_path(@request)
