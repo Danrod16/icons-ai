@@ -58,6 +58,13 @@ gem "ruby-openai"
 gem "cloudinary"
 gem "open-uri"
 gem "remove_bg"
+gem "pay", "~> 7.0"
+
+# To use Stripe, also include:
+gem "stripe", "~> 10.0"
+
+# To use Receipts gem for creating invoice and receipt PDFs, also include:
+gem "receipts", "~> 2.0"
 
 group :development, :test do
   gem "dotenv-rails"

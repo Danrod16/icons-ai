@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :prompts, dependent: :destroy
   has_one :wallet, dependent: :destroy
   after_create :assign_wallet
+  include Pay::Billable
+  pay_customer default_payment_processor: :stripe
+
 
   private
 

@@ -203,8 +203,16 @@ GEM
       time
       uri
     orm_adapter (0.5.0)
+    pay (7.1.1)
+      rails (>= 6.0.0)
+    pdf-core (0.9.0)
     pg (1.5.4)
     popper_js (2.11.8)
+    prawn (2.4.0)
+      pdf-core (~> 0.9.0)
+      ttfunk (~> 1.7)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -245,6 +253,9 @@ GEM
     rake (13.1.0)
     rdoc (6.6.1)
       psych (>= 4.0.0)
+    receipts (2.2.0)
+      prawn (>= 1.3.0, < 3.0.0)
+      prawn-table (~> 0.2.1)
     redis (4.8.1)
     regexp_parser (2.8.3)
     reline (0.4.1)
@@ -292,11 +303,13 @@ GEM
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    stripe (10.6.0)
     thor (1.3.0)
     tilt (2.3.0)
     time (0.3.0)
       date
     timeout (0.4.1)
+    ttfunk (1.7.0)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -335,9 +348,11 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   open-uri
+  pay (~> 7.0)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
+  receipts (~> 2.0)
   redis (~> 4.0)
   remove_bg
   ruby-openai
@@ -346,6 +361,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  stripe (~> 10.0)
   turbo-rails
   tzinfo-data
   web-console
