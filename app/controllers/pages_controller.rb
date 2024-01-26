@@ -5,4 +5,13 @@ class PagesController < ApplicationController
     @prompt = Prompt.new
     @requests = Request.all
   end
+
+  def refund
+  end
+
+  def cookies
+  end
+
+  def terms
+  end
 end
