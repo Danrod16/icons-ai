@@ -6,12 +6,20 @@
         <div class="request-buttons-wrapper">
             <h2><%= @request.topic %></h2>
             <% unless @request.bg_removed? %>
-                <%= link_to "Remove Background", remove_bg_path(@request), class: "btn button-primary" %>
+                <% if current_user.wallet.positive_balance? %>
+                    <%= link_to "Remove Background (1 token)", remove_bg_path(@request), class: "btn button-primary" %>
+                <% else %>
+                    <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+                <% end %>
             <% end %>
             <%= link_to download_path(@request), class: "btn btn-secondary" do %>
                 <i class="fas fa-download"></i> Download
             <% end %>
-            <%= link_to "Generate another logo", new_prompt_request_path(@prompt), class: "btn btn-secondary" %>
+            <% if current_user.wallet.positive_balance? %>
+                <%= link_to "Generate another logo (1 token)", new_prompt_request_path(@prompt), class: "btn btn-secondary" %>
+            <% else %>
+                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+            <% end %>
          </div>
     </div>
 </div>

@@ -18,6 +18,12 @@ class Prompt < ApplicationRecord
                 temperature: 0.1,
             })
         self.update(prompt_response: response.dig("choices", 0, "message", "content"))
+        transaction = Transaction.create(
+            user: self.user,
+            wallet: self.user.wallet,
+            amount: 1
+        )
+        self.user.wallet.update(balance: self.user.wallet.balance - transaction.amount)
         # => "Hello! How may I assist you today?"
         rescue Faraday::Error => e
             raise "Got a Faraday error: #{e}"

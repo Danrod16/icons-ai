@@ -1,3 +1,9 @@
-<h1>Checkout</h1>
-
-<%= render partial: "pay/stripe/checkout_button", locals: {session: @checkout_session, title: "Checkout"} %>
+<div class="home-bg">
+    <div class="my-container">
+        <h1>Checkout</h1>
+        <p>Buy 15 tokens, enough to generate 10 logos and remove 10 backgrounds.</p>
+        <%= image_tag "token-top-up.png", class: "token-top-up-image" %> <br>
+        <br>
+        <%= render partial: "pay/stripe/checkout_button", locals: {session: @checkout_session, title: "Top up 5€"} %>
+    </div>
+</div>

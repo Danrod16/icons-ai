@@ -2,11 +2,19 @@
     <div class="my-container">
         <%= simple_form_for [@prompt, @request] do |f| %>
             <%= f.input :topic, as: :radio_buttons, collection: @prompt.prompt_response.split("$"), label: "Please select the description that best fits your vision for the logo" %>
-            <%= f.submit "Generate logo", class: "button-primary" %>
+            <% if current_user.wallet.positive_balance? %>
+                <%= f.submit "Generate logo (1 token)", class: "button-primary" %>
+            <% else %>
+                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+            <% end %>
         <% end %>
         <%= simple_form_for @new_prompt do |f| %>
             <%= f.input :description, as: :hidden, input_html: { value: @prompt.description } %>
-            <%= f.submit "Give me other options", class: "btn btn-secondary" %>
+            <% if current_user.wallet.positive_balance? %>
+                <%= f.submit "Give me other options (1 token)", class: "btn btn-secondary" %>
+            <% else %>
+                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+            <% end %>
         <% end %>
     </div>
 </div>

@@ -1,6 +1,5 @@
 .request-bg {
-    background-color: #333333;
-    height: 100vh;
+    background-color: #ffffff;
     background-repeat: no-repeat;
     background-size: cover; 
     text-align: center;
@@ -23,4 +22,10 @@
 .request-buttons-wrapper {
     display: block;
     text-align: left;
+}
+
+.token-top-up-image {
+    width: 35%;
+    height: 35%;
+    border-radius: 15px;
 }

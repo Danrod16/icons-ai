@@ -3,10 +3,21 @@ h1, h2, h3, h4, h5, h6, label, legend, p, span, a, button, textarea, select, sma
     font-weight: 300;
     margin: 0;
     padding: 0;
-    color: white !important;
+    color: 33333 !important;
 }
 
 a {
     text-decoration: none !important;
-    color: white;
+    color: #333333 !important;
+    &:hover {
+        color: $primary-red !important;
+    }
+}
+
+button {
+    font-weight: bold;
+}
+
+body {
+    background-color: #ffffff !important
 }

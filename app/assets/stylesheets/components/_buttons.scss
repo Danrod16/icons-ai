@@ -6,7 +6,22 @@
     border-radius: 5px;
     color: white;
     border: none;
+    margin: 5px;
     &:hover {
         background-color: $secondary-red;
+    }
+}
+
+.button-secondary {
+    background-color: none;
+    text-align: center;
+    padding: 8px 30px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: $primary-red !important;
+    border: 1px solid $primary-red;
+    &:hover {
+        background-color: $primary-red;
+        color: white !important;
     }
 }

@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png", class: "avatar" %>
     <% end %>
 
@@ -20,23 +20,17 @@
           <li class="nav-item">
             <%= link_to "History", history_path, class: "nav-link" %>
           </li>
+          <li class="nav-item"> 
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
           <li class="nav-item">
-            <small class="nav-link" ><%= current_user.wallet.balance %> 
+            <small class="nav-link" ><%= current_user.wallet.balance.to_i %> 
             <%# coin icon %>
             <i class="fas fa-coins"></i>
             </small>
           </li>
-          <li class="nav-item">
-            <%= link_to "Top up", checkout_path, class: "btn btn-secondary" %>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bars" id="burger-icon" alt="dropdown menu"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item" style="display: contents">
+            <%= link_to "Top up", checkout_path, class: "button-secondary" %>
           </li>
         <% else %>
           <li class="nav-item">
