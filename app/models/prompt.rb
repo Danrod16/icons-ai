@@ -14,7 +14,7 @@ class Prompt < ApplicationRecord
         response = client.chat(
             parameters: {
                 model: "gpt-4",
-                messages: [{ role: "user", content: "Please give me 5 different detailed prompts that describe different logo designs that could be used for asking Dall-e 2 model to design a logo based on the following description: #{description}. Each prompt should recommend different visual elements and colors proposition with its justification and should follow this structure: Create a simple [Style type] logo for a [industry] brand with a [description of the elements and what it symbolizes] and [colors or color shades description] on a white background. Please seperate each prompt with a $ sign"}], # Required.
+                messages: [{ role: "user", content: "Please give me 5 different detailed prompts that describe different logo designs that could be used for asking Dall-e 2 model to design a logo based on the following description: #{description}. Each prompt should recommend different visual elements and colors proposition with its justification and should follow this structure: Create a simple [Style type] logo for a [industry] brand with a [description of the elements and what it symbolizes] and [colors or color shades description] on a white background. Please seperate each prompt with a $ sign and don't use numbered list"}], # Required.
                 temperature: 0.1,
             })
         self.update(prompt_response: response.dig("choices", 0, "message", "content"))

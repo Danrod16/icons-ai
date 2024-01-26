@@ -4,7 +4,7 @@
         <div class="request-info-wrapper">
          <%= cl_image_tag @request.photo.key, width: 300, height: 300, crop: :fill, class: "request-image" %>
         <div class="request-buttons-wrapper">
-            <h2><%= @request.topic %></h2>
+            <h4><%= @request.topic %></h4>
             <% unless @request.bg_removed? %>
                 <% if current_user.wallet.positive_balance? %>
                     <%= link_to "Remove Background (1 token)", remove_bg_path(@request), class: "btn button-primary" %>

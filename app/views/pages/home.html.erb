@@ -3,12 +3,11 @@
         <h1>Hey there👋 I'm Willy, your AI graphic designer</h1>
         <h3>I will create a logo for your business in minutes. With transparent background</h3>
         <div class="form-wrapper">
-            <%= simple_form_for @prompt do |f| %>
+            <%= simple_form_for @prompt, html: { data: { controller: "formSubmitLoader" } } do |f| %>
                 <%= f.input :description, label: "Describe your business and logo specifications for me to understand your needs", placeholder: "I have a mexican restaurant that specializes in seafood dishes from the Yucatan peninsula, I am looking for a logo that represents the sea and the freshness of my ingredients, I'm also looking for the logo to include the colors of the mexican flag.", id: "prompt-description" %>
                 <br>
-                <br>
                 <% if user_signed_in? && current_user.wallet.positive_balance? %>
-                    <%= f.submit "Submit (1 token)", class: "button-primary", data: { disable_with: "Generating...", turbo_confirm: "This action will remove 1 token from your wallet" } %>
+                    <%= f.submit "Submit (1 token)", class: "button-primary", data: { disable_with: "Generating...", turbo_confirm: "This action will remove 1 token from your wallet", action: "click->formSubmitLoader#submit", target: "formSubmitLoader.submit" } %>
                 <% elsif user_signed_in? && !current_user.wallet.positive_balance? %>
                     <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
                 <% else %>
