@@ -183,7 +183,6 @@ GEM
     mime-types-data (3.2023.1205)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
     minitest (5.21.2)
     msgpack (1.7.2)
     multipart-post (2.3.0)
@@ -198,12 +197,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.0)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.16.0-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     open-uri (0.4.1)
       stringio
@@ -342,13 +336,12 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
-  ruby
-  x86_64-linux
 
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap (~> 5.2)
+  bundler (~> 2.3.25)
   capybara
   cloudinary
   debug
@@ -380,4 +373,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.5.5
+   2.3.27
