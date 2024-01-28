@@ -1,5 +1,5 @@
 Rails.configuration.stripe = {
-    private_key: ENV['STRIPE_PUBLIC_KEY'],
+    public_key: ENV['STRIPE_PUBLIC_KEY'],
     private_key: ENV['STRIPE_PRIVATE_KEY'],
     signing_secret:  ENV['STRIPE_SIGNING_SECRET']
   }
