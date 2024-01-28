@@ -5,7 +5,7 @@
             <% if current_user.wallet.positive_balance? %>
                 <%= f.submit "Generate logo (1 token)", class: "button-primary" %>
             <% else %>
-                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+                <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>
         <% end %>
         <%= simple_form_for @new_prompt do |f| %>
@@ -13,7 +13,7 @@
             <% if current_user.wallet.positive_balance? %>
                 <%= f.submit "Give me other options (1 token)", class: "btn btn-secondary" %>
             <% else %>
-                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+                <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>
         <% end %>
     </div>

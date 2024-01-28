@@ -18,7 +18,7 @@
             <% if current_user.wallet.positive_balance? %>
                 <%= link_to "Generate another logo (1 token)", new_prompt_request_path(@prompt), class: "btn btn-secondary" %>
             <% else %>
-                <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+                <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>
          </div>
     </div>
