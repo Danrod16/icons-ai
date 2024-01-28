@@ -369,6 +369,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  matrix (~> 0.4.2)
   open-uri
   pay (~> 7.0)
   pg (~> 1.1)
