@@ -9,7 +9,7 @@
                 <% if current_user.wallet.positive_balance? %>
                     <%= link_to "Remove Background (1 token)", remove_bg_path(@request), class: "btn button-primary" %>
                 <% else %>
-                    <%= link_to "Top up your wallet", new_checkout_path, class: "button-primary" %>
+                    <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
                 <% end %>
             <% end %>
             <%= link_to download_path(@request), class: "btn btn-secondary" do %>
