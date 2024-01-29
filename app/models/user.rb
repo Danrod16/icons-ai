@@ -15,6 +15,6 @@ class User < ApplicationRecord
   private
 
   def assign_wallet
-    Wallet.create(user: self, balance: 3)
+    Wallet.create(user: self, balance: 5)
   end
 end
