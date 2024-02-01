@@ -23,7 +23,7 @@ class Request < ApplicationRecord
     begin
       client = OpenAI::Client.new
       response = client.images.generate(parameters: {
-         prompt: "You are a graphic designer, #{topic}. The logo should be a unique drawing and not on a mochup of any kind, it should be simple enough that it can be turned into a 16x16 favicon and should not include any lettering and do not show any realistic photo detail shading", size: "1024x1024", model: "dall-e-3", num_images: 1
+         prompt: "You are a graphic designer, #{topic}. The logo should be a unique drawing and not on a mockup of any kind, it should be simple enough that it can be turned into a 16x16 favicon and should not include any lettering and do not show any realistic photo detail shading", size: "1024x1024", model: "dall-e-3", num_images: 1
         })
         puts response
         url = response["data"][0]["url"]
