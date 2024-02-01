@@ -3,3 +3,9 @@
     margin: 0px auto;
     min-height: 75vh;
 }
+
+@media (min-width: 100px) and (max-width: 991px) {
+    .my-container {
+        padding: 5%;
+    }
+}
