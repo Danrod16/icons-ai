@@ -7,11 +7,11 @@
                 <%= f.input :description, label: "Describe your business and logo specifications for me to understand your needs", placeholder: "I have a mexican restaurant that specializes in seafood dishes from the Yucatan peninsula, I am looking for a logo that represents the sea and the freshness of my ingredients, I'm also looking for the logo to include the colors of the mexican flag.", id: "prompt-description" %>
                 <br>
                 <% if user_signed_in? && current_user.wallet.positive_balance? %>
-                    <%= f.submit "Submit (1 token)", class: "button-primary", data: { disable_with: "Generating...", turbo_confirm: "This action will remove 1 token from your wallet", action: "click->formSubmitLoader#submit", target: "formSubmitLoader.submit" } %>
+                    <%= f.submit "Submit (1 token)", class: "button-primary", data: { turbo_submits_with: "Generating, please wait...", turbo_confirm: "This action will remove 1 token from your wallet", action: "click->formSubmitLoader#submit", target: "formSubmitLoader.submit" } %>
                 <% elsif user_signed_in? && !current_user.wallet.positive_balance? %>
                     <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
                 <% else %>
-                    <%= link_to "Sign up to get started", new_user_registration_path, class: "button-primary" %>
+                    <%= link_to "Sign up to get started", new_user_registration_path, data: { disable_with: "Saving..." }, class: "button-primary" %>
                 <% end %>
             <% end %>
         </div>

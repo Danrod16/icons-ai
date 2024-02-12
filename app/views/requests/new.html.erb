@@ -3,7 +3,7 @@
         <%= simple_form_for [@prompt, @request] do |f| %>
             <%= f.input :topic, as: :radio_buttons, collection: @prompt.prompt_response.split("$"), label: "Please select the description that best fits your vision for the logo" %>
             <% if current_user.wallet.positive_balance? %>
-                <%= f.submit "Generate logo (1 token)", class: "button-primary" %>
+                <%= f.submit "Generate logo (1 token)", class: "button-primary", data: { turbo_submits_with: "Generating, please wait..." } %>
             <% else %>
                 <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>
@@ -11,7 +11,7 @@
         <%= simple_form_for @new_prompt do |f| %>
             <%= f.input :description, as: :hidden, input_html: { value: @prompt.description } %>
             <% if current_user.wallet.positive_balance? %>
-                <%= f.submit "Give me other options (1 token)", class: "btn btn-secondary" %>
+                <%= f.submit "Give me other options (1 token)", class: "btn btn-secondary", data: { turbo_submits_with: "Generating, please wait..." } %>
             <% else %>
                 <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>

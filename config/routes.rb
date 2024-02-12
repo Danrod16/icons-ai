@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get "/billing", to: "billing#show"
   get "requests/:id/remove_bg", to: "requests#remove_bg", as: :remove_bg
   get "requests/:id/download", to: "requests#download", as: :download
-  get "history", to: "requests#history", as: :history
+  get "/history", to: "requests#history", as: :history
 end

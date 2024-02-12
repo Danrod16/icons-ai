@@ -7,7 +7,7 @@
             <h4><%= @request.topic %></h4>
             <% unless @request.bg_removed? %>
                 <% if current_user.wallet.positive_balance? %>
-                    <%= link_to "Remove Background (1 token)", remove_bg_path(@request), class: "btn button-primary" %>
+                    <%= link_to "Remove Background (1 token)", remove_bg_path(@request), class: "btn button-primary", data: { turbo_submits_with: "Removing background, please wait..." } %>
                 <% else %>
                     <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
                 <% end %>
@@ -16,7 +16,7 @@
                 <i class="fas fa-download"></i> Download
             <% end %>
             <% if current_user.wallet.positive_balance? %>
-                <%= link_to "Generate another logo (1 token)", new_prompt_request_path(@prompt), class: "btn btn-secondary" %>
+                <%= link_to "Generate another logo (1 token)", new_prompt_request_path(@prompt), class: "btn btn-secondary", data: { turbo_submits_with: "Generating, please wait..." } %>
             <% else %>
                 <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
             <% end %>
