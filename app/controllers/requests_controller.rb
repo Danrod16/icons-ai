@@ -38,7 +38,7 @@ class RequestsController < ApplicationController
         
         begin
           image_result = RemoveBg.from_url(url, size: "regular", type: "auto", raw: true, api_key: ENV["REMOVE_BG_API_KEY"])
-          image_data = image_result.image_data 
+          image_data = image_result.data 
           image_io = StringIO.new(image_data)
           image_io.class.class_eval do
             attr_accessor :original_filename, :content_type
