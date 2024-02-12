@@ -35,19 +35,34 @@ class RequestsController < ApplicationController
     def remove_bg
         @request = Request.find(params[:id])
         url = @request.photo.url
-        image = RemoveBg.from_url(url, size: "regular", type: "auto", raw: true, api_key: ENV["REMOVE_BG_API_KEY"])
-        image_path = "#{Rails.root}/app/assets/images/user_images/#{@request.id}-logo.png"
-        image.save(image_path, overwrite: true)      
-        @request.photo.purge if @request.photo.attached?
-        @request.photo.attach(io: File.open(image_path), filename: "logo.png", content_type: "image/png")
-        File.delete(image_path)
-        @request.background_removed!
-        redirect_to request_path(@request)
-    end
+        
+        begin
+          image_result = RemoveBg.from_url(url, size: "regular", type: "auto", raw: true, api_key: ENV["REMOVE_BG_API_KEY"])
+          image_data = image_result.image_data 
+          image_io = StringIO.new(image_data)
+          image_io.class.class_eval do
+            attr_accessor :original_filename, :content_type
+          end
+          image_io.original_filename = "processed_image.png"
+          image_io.content_type = "image/png"
+          if @request.photo.attached?
+            @request.photo.purge
+          end
+          @request.photo.attach(io: image_io, filename: image_io.original_filename, content_type: image_io.content_type)
+          @request.background_removed!
+          redirect_to request_path(@request), notice: 'Background removed successfully and image uploaded.'
+        rescue RemoveBg::Error => e
+          logger.error "RemoveBg error: #{e.message}"
+          redirect_to request_path(@request), alert: 'Failed to remove background from the image.'
+        rescue => e
+          logger.error "Unexpected error: #{e.message}"
+          redirect_to request_path(@request), alert: 'An unexpected error occurred.'
+        end
+      end
 
     def download
         @request = Request.find(params[:id])
-        send_data @request.photo.download, filename: @request.topic, content_type: @request.photo.content_type
+        send_data @request.photo.download, filename: "logo-#{@request.id}.png", content_type: @request.photo.content_type
     end
 
     private
