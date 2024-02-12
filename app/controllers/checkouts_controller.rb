@@ -5,8 +5,8 @@ class CheckoutsController < ApplicationController
         @checkout_session = current_user.payment_processor.checkout(
             mode: "payment",
             line_items: product,
-            success_url: root_path,
-            cancel_url: root_path
+            success_url: root_url,
+            cancel_url: root_url
         )
     end     
 
