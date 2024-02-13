@@ -60,7 +60,7 @@ gem "open-uri"
 gem "remove_bg"
 gem "pay", "~> 7.0"
 gem "administrate"
-gem "rack-timeout"
+# gem "rack-timeout"
 
 
 
