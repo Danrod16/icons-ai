@@ -10,7 +10,7 @@ class Prompt < ApplicationRecord
 
     def call_prompt
         begin
-        client = OpenAI::Client.new
+        client = OpenAI::Client.new(request_timeout: 30)
         response = client.chat(
             parameters: {
                 model: "gpt-4",
@@ -24,7 +24,6 @@ class Prompt < ApplicationRecord
             amount: 1
         )
         self.user.wallet.update(balance: self.user.wallet.balance - transaction.amount)
-        # => "Hello! How may I assist you today?"
         rescue Faraday::Error => e
             raise "Got a Faraday error: #{e}"
         end
