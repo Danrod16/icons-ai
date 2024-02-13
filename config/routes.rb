@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :prompts
+      resources :requests
+      resources :transactions
+      resources :users
+      resources :wallets
+
+      root to: "prompts#index"
+    end
   devise_for :users
   root to: "pages#home"
   get "/refund", to: "pages#refund"

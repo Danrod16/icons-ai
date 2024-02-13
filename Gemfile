@@ -59,6 +59,8 @@ gem "cloudinary"
 gem "open-uri"
 gem "remove_bg"
 gem "pay", "~> 7.0"
+gem "administrate"
+
 
 # To use Stripe, also include:
 gem "stripe", "~> 10.0"
