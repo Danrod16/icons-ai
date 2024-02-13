@@ -10,7 +10,7 @@ class Prompt < ApplicationRecord
 
     def call_prompt
         begin
-        client = OpenAI::Client.new(request_timeout: 30)
+        client = OpenAI::Client.new(request_timeout: 40)
         response = client.chat(
             parameters: {
                 model: "gpt-4",
@@ -24,8 +24,10 @@ class Prompt < ApplicationRecord
             amount: 1
         )
         self.user.wallet.update(balance: self.user.wallet.balance - transaction.amount)
-        rescue Faraday::Error => e
-            raise "Got a Faraday error: #{e}"
+        rescue Rack::Timeout::RequestTimeoutException => e
+            raise "Got a Rack Timeout error: #{e}"
+            redirect_to new_prompt_path, alert: 'An unexpected error occurred. Try again later.'
+            Error.new(name: "Rack Timeout Error", message: "Got a Rack Timeout error: #{e}")
         end
     end
 end
