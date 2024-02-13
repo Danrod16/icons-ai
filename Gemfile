@@ -60,6 +60,8 @@ gem "open-uri"
 gem "remove_bg"
 gem "pay", "~> 7.0"
 gem "administrate"
+gem "rack-timeout"
+
 
 
 # To use Stripe, also include:
