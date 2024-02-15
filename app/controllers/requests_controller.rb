@@ -62,6 +62,7 @@ class RequestsController < ApplicationController
 
     def download
         @request = Request.find(params[:id])
+        @request.update(downloaded: true)
         send_data @request.photo.download, filename: "logo-#{@request.id}.png", content_type: @request.photo.content_type
     end
 
