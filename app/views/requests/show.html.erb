@@ -18,15 +18,13 @@
                     <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
                 <% end %>
             <% end %>
-            <%= link_to download_path(@request), class: "btn btn-secondary" do %>
+            <%= link_to download_path(@request), class: "btn button-secondary" do %>
                 <i class="fas fa-download"></i> Download
             <% end %>
-            <% if current_user.wallet.positive_balance? %>
-                <%= link_to "Generate another logo (1 token)", new_prompt_request_path(@prompt), class: "btn btn-secondary", data: { turbo_submits_with: "Generating, please wait..." } %>
-            <% else %>
-                <%= link_to "Top up your wallet", checkout_path, class: "button-primary" %>
-            <% end %>
-         </div>
+            <%= link_to "Book a free call with a designer", "https://calendly.com/mariabarreca/30min?email=#{current_user.email}&question_0=#{@request.topic}", class: "btn button-secondary", target: "_blank" %>
+            <%= link_to "Back", new_prompt_request_path(@prompt), class: "btn button-secondary", data: { turbo_submits_with: "Generating, please wait..." } %>
+            <br>
+        </div>
     </div>
 </div>
 <small>Did I hit the mark? <strong><%= link_to "Help me get better", "https://wallylogos.wyshlist.net/wishlists/160/wishes", target: "_blank", class: "nav-link" %></strong></small>
